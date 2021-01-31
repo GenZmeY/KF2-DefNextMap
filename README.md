@@ -15,7 +15,7 @@ It's a server-side mutator, it doesn't need to be loaded on the client.
 # Build
 1. Install [Killing Floor 2](https://store.steampowered.com/app/232090/Killing_Floor_2/), Killing Floor 2 - SDK and [git for windows](https://git-scm.com/download/win);
 2. Open git-bash, clone this repository and go to the source folder:  
-`git clone https://github.com/GenZmeY/KF2-DefNextMap && cd KF2-TAWOD`  
+`git clone https://github.com/GenZmeY/KF2-DefNextMap && cd KF2-DefNextMap`  
 3. Run make.sh script:  
 `./make.sh --compile`  
 4. The compiled files will be here:  
