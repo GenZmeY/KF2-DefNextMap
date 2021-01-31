@@ -1,0 +1,24 @@
+[h1]Description:[/h1]
+[i]
+If players have not voted for the next map, a random official map from the current map cycle will be selected.
+
+When connecting to a server, players no longer need to load a custom map if they are not going to play on it.
+
+It's a server-side mutator, it doesn't need to be loaded on the client.
+[/i]
+
+[h1]The mutator is not whitelisted![/h1]
+You will not gain experience for playing with this mutator.
+
+[h1]Usage (server):[/h1]
+[b]Note:[/b] If you don't understand what is written here, read the article [url=https://wiki.killingfloor2.com/index.php?title=Dedicated_Server_(Killing_Floor_2)][u]Dedicated Server (KF2 wiki)[/u][/url] before following these instructions.
+
+1. Open your PCServer-KFEngine.ini / LinuxServer-KFEngine.ini;  
+2. Add the following string to the [OnlineSubsystemSteamworks.KFWorkshopSteamworks] section:  
+[code]ServerSubscribedWorkshopItems=2379979801[/code]
+3. Start the server and wait while the mutator is downloading;
+4. Add the following line to the startup parameters and restart the server:
+[code]?Mutator=DefNextMap.DefNextMapMut[/code]
+
+[h1]Sources:[/h1]
+[url=https://github.com/GenZmeY/KF2-DefNextMap][u]Github[/u][/url] (GNU GPLv3)
