@@ -1,6 +1,6 @@
 # Default Next Map
 
-[![Steam Workshop](https://img.shields.io/badge/steam-workshop-0)](https://steamcommunity.com/sharedfiles/filedetails/?id=2379979801)
+[![Steam Workshop](https://img.shields.io/static/v1?message=workshop&logo=steam&labelColor=gray&color=blue&logoColor=white&label=steam%20)](https://steamcommunity.com/sharedfiles/filedetails/?id=2379979801)
 [![Steam Favorites](https://img.shields.io/steam/favorites/2379979801)](https://steamcommunity.com/sharedfiles/filedetails/?id=2379979801)
 [![Steam Update Date](https://img.shields.io/steam/update-date/2379979801)](https://steamcommunity.com/sharedfiles/filedetails/?id=2379979801)
 [![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/GenZmeY/KF2-DefNextMap)](https://github.com/GenZmeY/KF2-DefNextMap/tags)
