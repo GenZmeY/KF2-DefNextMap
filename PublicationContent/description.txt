@@ -1,11 +1,7 @@
 [h1]Description:[/h1]
-[i]
 If players have not voted for the next map, a random official map from the current map cycle will be selected.
-
 When connecting to a server, players no longer need to load a custom map if they are not going to play on it.
-
 It's a server-side mutator, it doesn't need to be loaded on the client.
-[/i]
 
 [h1]The mutator is not whitelisted![/h1]
 You will not gain experience for playing with this mutator.
