@@ -16,5 +16,9 @@ You will not gain experience for playing with this mutator.
 4. Add the following line to the startup parameters and restart the server:
 [code]?Mutator=DefNextMap.DefNextMapMut[/code]
 
+[h1]Issues[/h1]
+[b]Q:[/b] Rarely, but it happens that I see my empty server with a custom map. why?
+[b]A:[/b] This happens when a player has voted on a map and left after that (on purpose or because of bugsplat, it doesn't matter). The server sees that there is a map from the vote and selects it. 
+
 [h1]Sources:[/h1]
 [url=https://github.com/GenZmeY/KF2-DefNextMap][u]Github[/u][/url] (GNU GPLv3)
