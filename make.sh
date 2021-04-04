@@ -38,6 +38,7 @@ function show_help ()
 	echo "  -b, --brew"
 	echo " -bu, --brew-unpublished"
 	echo "  -u, --upload"
+	echo "  -t, --test"
 	echo "  -h, --help"
 }
 
@@ -71,13 +72,13 @@ function restore_kfeditorconf ()
 
 function setup_modpackages ()
 {
-	multini --set "$KFEditorConf" 'ModPackages' 'ModPackages' 'DefNextMap'
+	multini --set "$KFEditorConf" 'ModPackages' 'ModPackages' 'NextMapMut'
 	multini --set "$KFEditorConf" 'ModPackages' 'ModPackagesInPath' "$(unixpath2win "$MutSource")"
 }
 
 function compiled ()
 {
-	test -f "$MutStructScript/DefNextMap.u"
+	test -f "$MutStructScript/NextMapMut.u"
 }
 
 function compile ()
@@ -152,6 +153,25 @@ function upload ()
 	rm -f "$MutWsInfo"
 }
 
+function create_default_testing_ini ()
+{
+echo "Map=\"KF-Outpost\"
+Game=\"KFGameContent.KFGameInfo_Survival\"
+Difficulty=\"0\"
+GameLength=\"0\"
+Mutators=\"NextMapMut.NextMapMut\"
+Args=\"\"" > "$MutTestingIni"
+}
+
+function game_test ()
+{
+	if ! [[ -r "$MutTestingIni" ]]; then
+		create_default_testing_ini
+	fi
+	source "$MutTestingIni"
+	CMD //C "$(unixpath2win "$KFGame")" ${Map}?Difficulty=${Difficulty}?GameLength=${GameLength}?Game=${Game}?Mutator=${Mutators}?${Args} -useunpublished -log
+}
+
 ScriptFullname=$(readlink -e "$0")
 ScriptName=$(basename "$0")
 ScriptDir=$(dirname "$ScriptFullname")
@@ -195,5 +215,6 @@ case $1 in
 	  -b|--brew             ) brew             ; ;;
 	 -bu|--brew-unpublished ) brew_unpublished ; ;;
 	  -u|--upload           ) upload           ; ;;
+	  -t|--test             ) game_test        ; ;;
 	    *                   ) echo "Command not recognized: $1"; exit 1;;
 esac
