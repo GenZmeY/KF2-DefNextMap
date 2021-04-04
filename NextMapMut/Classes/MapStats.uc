@@ -8,27 +8,12 @@ struct MapStatEntry
 };
 var config array<MapStatEntry> MapStat;
 
-static function int CounterSortAsc(MapStatEntry A, MapStatEntry B)
-{
-	return B.Counter < A.Counter ? -1 : 0;
-}
+static function int CounterSortAsc  (MapStatEntry A, MapStatEntry B) { return B.Counter < A.Counter ? -1 : 0; }
+static function int CounterSortDesc (MapStatEntry A, MapStatEntry B) { return A.Counter < B.Counter ? -1 : 0; }
+static function int NameSortAsc     (MapStatEntry A, MapStatEntry B) { return B.Name    < A.Name    ? -1 : 0; }
+static function int NameSortDesc    (MapStatEntry A, MapStatEntry B) { return A.Name    < B.Name    ? -1 : 0; }
 
-static function int CounterSortDesc(MapStatEntry A, MapStatEntry B)
-{
-	return A.Counter < B.Counter ? -1 : 0;
-}
-
-static function int NameSortAsc(MapStatEntry A, MapStatEntry B)
-{
-	return B.Name < A.Name ? -1 : 0;
-}
-
-static function int NameSortDesc(MapStatEntry A, MapStatEntry B)
-{
-	return A.Name < B.Name ? -1 : 0;
-}
-
-static function IncMapStat(string Map)
+static function IncMapStat(string Map, optional string SortPolicy = "False")
 {
 	local int MapStatEntryIndex;
 	local MapStatEntry NewEntry;
@@ -44,14 +29,17 @@ static function IncMapStat(string Map)
 	{
 		Default.MapStat[MapStatEntryIndex].Counter++;
 	}
-}
-
-static function Sort(optional bool Ascending = True)
-{
-	if (Ascending)
+	
+	if (SortPolicy ~= "CounterAsc")
 		Default.MapStat.Sort(CounterSortAsc);
-	else
+	else if (SortPolicy ~= "CounterDesc")
 		Default.MapStat.Sort(CounterSortDesc);
+	else if (SortPolicy ~= "NameAsc")
+		Default.MapStat.Sort(NameSortAsc);
+	else if (SortPolicy ~= "NameDesc")
+		Default.MapStat.Sort(NameSortDesc);
+	
+	StaticSaveConfig();
 }
 
 DefaultProperties

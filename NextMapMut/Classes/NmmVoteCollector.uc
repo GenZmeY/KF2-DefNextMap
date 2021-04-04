@@ -1,8 +1,8 @@
-class NmmVoteCollector extends KFVoteCollector;
+class NmmVoteCollector extends KFVoteCollector
+	dependson(MapStats);
 
+var string SortPolicy;
 var bool bEnableMapStats;
-var bool bSortStats;
-var bool bSortAscending;
 var bool bOfficialNextMapOnly;
 var bool bRandomizeNextMap;
 
@@ -82,12 +82,17 @@ function int GetNextMap()
 	else
 		MapIndex = GetNextMapIndex();
 
-	if (bEnableMapStats && MapIndex != INDEX_NONE)
+	if (bEnableMapStats)
 	{
-		LoadActiveMapCycle();
-		class'MapStats'.static.IncMapStat(ActiveMapCycle[MapIndex]);
-		if (bSortStats) class'MapStats'.static.Sort(bSortAscending);
-		class'MapStats'.static.StaticSaveConfig();
+		if (MapIndex == INDEX_NONE)
+		{
+			`log("[NextMapMut] Warn: MapIndex == INDEX_NONE, stats not saved");
+		}
+		else
+		{
+			LoadActiveMapCycle();
+			class'MapStats'.static.IncMapStat(ActiveMapCycle[MapIndex], SortPolicy);
+		}
 	}
 
 	return MapIndex;

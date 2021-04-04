@@ -83,10 +83,9 @@ function Initialize()
 	
 	VoteCollector = NmmVoteCollector(MyKFGI.MyKFGRI.VoteCollector);
 	VoteCollector.bEnableMapStats = bEnableMapStats;
-	VoteCollector.bSortStats = !(SortStats ~= "False");
-	VoteCollector.bSortAscending = (SortStats ~= "Asc");
 	VoteCollector.bOfficialNextMapOnly = bOfficialNextMapOnly;
 	VoteCollector.bRandomizeNextMap = bRandomizeNextMap;
+	VoteCollector.SortPolicy = SortStats;
 	
 	`Log("[NextMapMut] Mutator loaded.");
 }
